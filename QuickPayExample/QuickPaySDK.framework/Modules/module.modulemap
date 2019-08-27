@@ -1,0 +1,11 @@
+framework module QuickPaySDK {
+  umbrella header "QuickPaySDK.h"
+
+  export *
+  module * { export * }
+}
+
+module QuickPaySDK.Swift {
+    header "QuickPaySDK-Swift.h"
+    requires objc
+}
