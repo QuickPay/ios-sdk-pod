@@ -135,14 +135,14 @@ linkRequest.sendRequest(success: { (paymentLink) in
 
 The last step is to use the `QPPaymentLink` to open the payment window and here you have two choices. You can either use a build-in convenience mechanism that will display the payment window and handle the interaction and responses for you, or you can handle that yourself and get full flexibility on how you want to present the payment window.
 
-If you want to use the convenience mechanism you will have to pass the payment url to the QuickPay class.
+If you want to use the convenience mechanism you will have to pass the payment url to the QuickPay class. With the Presentation enum you can specify whether you want to push or present the payment window.
 
 ```swift
 QuickPay.openPaymentLink(paymentUrl: paymentLink.url, onCancel: {
     // Handle if the user cancels
 }, onResponse: { (success) in
     // Handle success/failure
-}, presenter: self, animated: true, completion: nil, presentModal: true)
+}, presentation: .push(controller: self, animated: true, completion: nil))
 ```
 
 If success is true the payment has been handled but we do not yet know if the payment has been authorized. For that, we need to check the status of the payment which is done with the `QPGetPaymentRequest`.
