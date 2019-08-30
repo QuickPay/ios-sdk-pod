@@ -354,7 +354,7 @@ extension ShopViewController {
                             self.displayOkAlert(title: "Payment Not Accepted", message: "The payment was not accepted")
                         }
                     }, failure: self.handleQuickPayNetworkErrors)
-                }, presentation: .push(controller: self, animated: true, completion: nil))
+                }, presentation: .present(controller: self, animated: true, completion: nil))
             }, failure: self.handleQuickPayNetworkErrors)
         }, failure: self.handleQuickPayNetworkErrors)
     }
