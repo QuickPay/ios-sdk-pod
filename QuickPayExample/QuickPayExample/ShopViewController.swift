@@ -341,10 +341,14 @@ extension ShopViewController {
                 
                 // Step 3) Open the payment URL in a WebView
                 QuickPay.openPaymentLink(paymentUrl: paymentLink.url, onCancel: {
+                    self.removeSpinner()
+                    
                     self.displayOkAlert(title: "Payment Cancelled", message: "The payment was cancelled")
                 }, onResponse: { (success) in
                     // Step 4) Validate that the authoprization went well
                     QPGetPaymentRequest(id: payment.id).sendRequest(success: { (payment) in
+                        self.removeSpinner()
+                        
                         if payment.accepted {
                             self.displayOkAlert(title: "Payment Accepted", message: "The payment was accepted and the acquirer is \(payment.acquirer ?? "unknown")")
                             // Congratulations, you have successfully authorized the payment.
