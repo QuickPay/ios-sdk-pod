@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)
+// swift-compiler-version: Apple Swift version 5.2 (swiftlang-1103.0.32.1 clang-1103.0.32.29)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name QuickPaySDK
 import Foundation
 import PassKit
@@ -16,7 +16,7 @@ public class QPApplePayToken : Swift.Codable {
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class QPPaymentData : Swift.Codable {
+@_hasMissingDesignatedInitializers public class QPPaymentData : Swift.Codable {
   public var version: Swift.String?
   public var data: Swift.String?
   public var header: QuickPaySDK.QPPaymentHeader?
@@ -25,7 +25,7 @@ public class QPPaymentData : Swift.Codable {
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class QPPaymentHeader : Swift.Codable {
+@_hasMissingDesignatedInitializers public class QPPaymentHeader : Swift.Codable {
   public var ephemeralPublicKey: Swift.String?
   public var publicKeyHash: Swift.String?
   public var transactionId: Swift.String?
@@ -97,7 +97,7 @@ public class QPPayment : Swift.Codable {
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class QPNin : Swift.Codable {
+@_hasMissingDesignatedInitializers public class QPNin : Swift.Codable {
   public var number: Swift.String?
   public var country_code: Swift.String?
   public var gender: Swift.String?
@@ -105,7 +105,7 @@ public class QPNin : Swift.Codable {
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class QPAuthorizePaymentRequest : QuickPaySDK.QPRequest {
+@_hasMissingDesignatedInitializers public class QPAuthorizePaymentRequest : QuickPaySDK.QPRequest {
   public init(parameters: QuickPaySDK.QPAuthorizePaymentParams)
   public func sendRequest(success: @escaping (QuickPaySDK.QPPayment) -> Swift.Void, failure: ((Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)?)
   @objc deinit
@@ -134,7 +134,7 @@ public protocol PaymentViewDelegate {
   func didSelectPaymentMethod(_ paymentView: QuickPaySDK.PaymentView, paymentMethod: QuickPaySDK.PaymentView.PaymentMethod)
   func titleForPaymentMethod(_ paymentView: QuickPaySDK.PaymentView, paymentMethod: QuickPaySDK.PaymentView.PaymentMethod) -> Swift.String
 }
-@objc public class PaymentView : UIKit.UIView {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class PaymentView : UIKit.UIView {
   public enum PaymentMethod : Swift.String {
     case applepay
     case paymentcard
@@ -212,7 +212,7 @@ public class QPOperation : Swift.Codable {
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class QPRequest {
+@_hasMissingDesignatedInitializers public class QPRequest {
   @objc deinit
 }
 public struct QPRequestError : Swift.Codable {
@@ -240,7 +240,7 @@ public class QPCard : Swift.Codable {
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class QPPerson : Swift.Codable {
+@_hasMissingDesignatedInitializers public class QPPerson : Swift.Codable {
   public var first_name: Swift.String?
   public var last_name: Swift.String?
   public var email: Swift.String?
@@ -248,7 +248,7 @@ public class QPPerson : Swift.Codable {
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class QPCreatePaymentLinkRequest : QuickPaySDK.QPRequest {
+@_hasMissingDesignatedInitializers public class QPCreatePaymentLinkRequest : QuickPaySDK.QPRequest {
   public init(parameters: QuickPaySDK.QPCreatePaymentLinkParameters)
   public func sendRequest(success: @escaping (QuickPaySDK.QPPaymentLink) -> Swift.Void, failure: ((Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)?)
   @objc deinit
@@ -278,12 +278,12 @@ public class QPCreatePaymentLinkParameters : Swift.Codable {
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class QPCreateSubscriptionRequest : QuickPaySDK.QPRequest {
+@_hasMissingDesignatedInitializers public class QPCreateSubscriptionRequest : QuickPaySDK.QPRequest {
   public init(parameters: QuickPaySDK.QPCreateSubscriptionParameters)
   public func sendRequest(success: @escaping (QuickPaySDK.QPSubscription) -> Swift.Void, failure: ((Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)?)
   @objc deinit
 }
-public class QPCreatePaymentRequest : QuickPaySDK.QPRequest {
+@_hasMissingDesignatedInitializers public class QPCreatePaymentRequest : QuickPaySDK.QPRequest {
   public init(parameters: QuickPaySDK.QPCreatePaymentParameters)
   public func sendRequest(success: @escaping (QuickPaySDK.QPPayment) -> Swift.Void, failure: ((Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)?)
   @objc deinit
@@ -335,7 +335,7 @@ public protocol QPPaymentWindowControllerDelegate {
   func populateLoadingView(loadingView: UIKit.UIView)
   func loadingProgress(estimatedLoadingProgress: Swift.Float)
 }
-@objc public class QPPaymentWindowController : UIKit.UIViewController {
+@objc @_hasMissingDesignatedInitializers public class QPPaymentWindowController : UIKit.UIViewController {
   public var delegate: QuickPaySDK.QPPaymentWindowControllerDelegate?
   required public init(paymentUrl: Swift.String)
   convenience public init(paymentUrl: Swift.String, delegate: QuickPaySDK.QPPaymentWindowControllerDelegate)
@@ -343,8 +343,8 @@ public protocol QPPaymentWindowControllerDelegate {
   @objc override dynamic public func loadView()
   @objc public func cancel()
   @objc override dynamic public func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @objc deinit
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
 }
 extension QPPaymentWindowController : WebKit.WKNavigationDelegate {
   @objc dynamic public func webView(_ webView: WebKit.WKWebView, decidePolicyFor navigationAction: WebKit.WKNavigationAction, decisionHandler: @escaping (WebKit.WKNavigationActionPolicy) -> Swift.Void)
@@ -364,13 +364,13 @@ public protocol InitializeDelegate {
   func initializationStarted()
   func initializationCompleted()
 }
-@objc public class QuickPay : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class QuickPay : ObjectiveC.NSObject {
   public static var isApplePayEnabled: Swift.Bool? {
     get
-    }
+  }
   public static var isInitializing: Swift.Bool {
     get
-    }
+  }
   public static var logDelegate: QuickPaySDK.LogDelegate?
   public static var initializeDelegate: QuickPaySDK.InitializeDelegate?
   public static func initWith(apiKey: Swift.String)
@@ -381,7 +381,7 @@ public protocol InitializeDelegate {
 extension QuickPay {
   public static func isApplePayAvailableOnDevice() -> Swift.Bool
 }
-public class QPGetAcquireSettingsClearhausRequest : QuickPaySDK.QPRequest {
+@_inheritsConvenienceInitializers public class QPGetAcquireSettingsClearhausRequest : QuickPaySDK.QPRequest {
   override public init()
   public func sendRequest(success: @escaping (QuickPaySDK.QPClearhausSettings) -> Swift.Void, failure: ((Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)?)
   @objc deinit
@@ -427,13 +427,13 @@ public class QPSubscription : Swift.Codable {
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class QPGetSubscriptionRequest : QuickPaySDK.QPRequest {
+@_hasMissingDesignatedInitializers public class QPGetSubscriptionRequest : QuickPaySDK.QPRequest {
   public var id: Swift.Int
   public init(id: Swift.Int)
   public func sendRequest(success: @escaping (QuickPaySDK.QPSubscription) -> Swift.Void, failure: ((Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)?)
   @objc deinit
 }
-public class QPGetAcquireSettingsMobilePayRequest : QuickPaySDK.QPRequest {
+@_inheritsConvenienceInitializers public class QPGetAcquireSettingsMobilePayRequest : QuickPaySDK.QPRequest {
   override public init()
   public func sendRequest(success: @escaping (QuickPaySDK.QPMobilePaySettings) -> Swift.Void, failure: ((Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)?)
   @objc deinit
@@ -452,7 +452,7 @@ public struct EncodableValue : Swift.Encodable {
 public protocol LogDelegate {
   func log(_ msg: Any)
 }
-public class QPCreatePaymentSessionRequest : QuickPaySDK.QPRequest {
+@_hasMissingDesignatedInitializers public class QPCreatePaymentSessionRequest : QuickPaySDK.QPRequest {
   public init(id: Swift.Int, parameters: QuickPaySDK.QPCreatePaymentSessionParameters)
   public func sendRequest(success: @escaping (QuickPaySDK.QPPayment) -> Swift.Void, failure: ((Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)?)
   @objc deinit
@@ -508,12 +508,12 @@ public class PrintLogger {
 extension PrintLogger : QuickPaySDK.LogDelegate {
   public func log(_ msg: Any)
 }
-public class QPCreateSubscriptionLinkRequest : QuickPaySDK.QPRequest {
+@_hasMissingDesignatedInitializers public class QPCreateSubscriptionLinkRequest : QuickPaySDK.QPRequest {
   public init(parameters: QuickPaySDK.QPCreateSubscriptionLinkParameters)
   public func sendRequest(success: @escaping (QuickPaySDK.QPSubscriptionLink) -> Swift.Void, failure: ((Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)?)
   @objc deinit
 }
-public class QPMetadata : Swift.Codable {
+@_hasMissingDesignatedInitializers public class QPMetadata : Swift.Codable {
   public var type: Swift.String?
   public var origin: Swift.String?
   public var brand: Swift.String?
@@ -563,7 +563,7 @@ public class QPAddress : Swift.Codable {
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class QPGetPaymentRequest : QuickPaySDK.QPRequest {
+@_hasMissingDesignatedInitializers public class QPGetPaymentRequest : QuickPaySDK.QPRequest {
   public var id: Swift.Int
   public init(id: Swift.Int)
   public func sendRequest(success: @escaping (QuickPaySDK.QPPayment) -> Swift.Void, failure: ((Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)?)

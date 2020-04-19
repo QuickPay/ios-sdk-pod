@@ -19,8 +19,10 @@ end
 
 ### Swift Versions
 
-QuickPaySDK version >= 1.1.0 is build with Swift 5.1  
+QuickPaySDK version 1.1.2 Swift 5.2  
+QuickPaySDK version 1.1.0 and 1.1.1 is build with Swift 5.1  
 QuickPaySDK version < 1.1.0 is build with Swift 5.0
+
 ### Fat library
 
 The SDK is built as a fat library meaning it contains symbols for both the simulator and device architectures. This is done so you can develop on both platforms with the same binary without having to mess around with build paths or swapping out binaries. Unfortunately, Apple requires you to remove all simulator related symbols before submitting your app. The easiest way to do this is to add an additional build step that strips the unused architectures. If you don't have a script that does this already you can copy the one provided here. Select your build target, go to `Build Phases` and add a new run script phase. Copy and paste the code below into your script and you will be good to go.
