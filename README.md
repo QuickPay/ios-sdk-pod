@@ -1,4 +1,10 @@
+# THIS REPO IS NO LONGER MAINTANED!!
+
+We have migrated our SDK project into swift packages rather than using CocoaPods as our package platform. Please go to https://github.com/QuickPay/ios-sdk to find the newest and maintaned SDK.
+
+
 # QuickPay SDK
+
 
 The QuickPay SDK wraps the [QuickPay API](https://learn.quickpay.net/tech-talk/api/services/#services "QuickPay API") and provides the necessary functionality and convenience to add native payments to your app.
 
